@@ -1,0 +1,6 @@
+gdal
+shapely
+fiona
+geopandas
+numpy
+rasterio
