@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script>
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.0/leaflet.markercluster-src.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.0/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.0/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css" />
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <style> #map_be44729e26f04d668c0998702ea47b22 {
+                position : relative;
+                width : 100.0%;
+                height: 100.0%;
+                left: 0.0%;
+                top: 0.0%;
+                }
+            </style>
+        
+    
+            <style> #vega_2ad1353a03e84b7b9c5ebab0bf503e2a {
+                position : relative;
+                width : 500.0px;
+                height: 250.0px;
+                left: 0.0%;
+                top: 0.0%;
+            </style>
+            
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/1.4.3/vega.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-dvf/0.3.0/leaflet-dvf.markers.min.js"></script>
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_be44729e26f04d668c0998702ea47b22" ></div>
+        
+</body>
+<script>    
+    
+
+            
+                var southWest = L.latLng(-90, -180);
+                var northEast = L.latLng(90, 180);
+                var bounds = L.latLngBounds(southWest, northEast);
+            
+
+            var map_be44729e26f04d668c0998702ea47b22 = L.map(
+                                  'map_be44729e26f04d668c0998702ea47b22',
+                                  {center: [46.3014,-123.739],
+                                  zoom: 7,
+                                  maxBounds: bounds,
+                                  layers: [],
+                                  worldCopyJump: false,
+                                  crs: L.CRS.EPSG3857
+                                 });
+            
+        
+    
+            var tile_layer_2643556258f647c89cfa0c027e5d5cbe = L.tileLayer(
+                'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg',
+                {
+                    maxZoom: 18,
+                    minZoom: 1,
+                    continuousWorld: false,
+                    noWrap: false,
+                    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.',
+                    detectRetina: false
+                    }
+                ).addTo(map_be44729e26f04d668c0998702ea47b22);
+
+        
+    
+            var regular_polygon_marker_e2a0875036ed45afa54f91f651890ac5 = new L.RegularPolygonMarker(
+                new L.LatLng(47.3489,-124.708),
+                {
+                    icon : new L.Icon.Default(),
+                    color: 'black',
+                    opacity: 1,
+                    weight: 2,
+                    fillColor: '#43d9de',
+                    fillOpacity: 1,
+                    numberOfSides: 4,
+                    rotation: 0,
+                    radius: 12
+                    }
+                )
+                .addTo(map_be44729e26f04d668c0998702ea47b22);
+            
+    function vega_parse(spec, div) {
+            vg.parse.spec(spec, function(chart) { chart({el:div}).update(); });}
+    
+            var popup_3e59356d081b4765852861e15920b845 = L.popup({maxWidth: '800'});
+
+            
+                var vega_2ad1353a03e84b7b9c5ebab0bf503e2a = $('             <div id="vega_2ad1353a03e84b7b9c5ebab0bf503e2a"></div>             ')[0];
+                popup_3e59356d081b4765852861e15920b845.setContent(vega_2ad1353a03e84b7b9c5ebab0bf503e2a);
+            
+
+            regular_polygon_marker_e2a0875036ed45afa54f91f651890ac5.bindPopup(popup_3e59356d081b4765852861e15920b845);
+
+            
+                
+            vega_parse("{\n  \"axes\": [\n    {\n      \"scale\": \"x\",\n      \"type\": \"x\"\n    },\n    {\n      \"scale\": \"y\",\n      \"type\": \"y\"\n    }\n  ],\n  \"data\": [\n    {\n      \"name\": \"table\",\n      \"values\": [\n        {\n          \"col\": \"data\",\n          \"idx\": 0,\n          \"val\": 1\n        },\n        {\n          \"col\": \"data\",\n          \"idx\": 1,\n          \"val\": 2\n        },\n        {\n          \"col\": \"data\",\n          \"idx\": 2,\n          \"val\": 3\n        }\n      ]\n    },\n    {\n      \"name\": \"stats\",\n      \"source\": \"table\",\n      \"transform\": [\n        {\n          \"keys\": [\n            \"data.idx\"\n          ],\n          \"type\": \"facet\"\n        },\n        {\n          \"type\": \"stats\",\n          \"value\": \"data.val\"\n        }\n      ]\n    }\n  ],\n  \"height\": 500,\n  \"legends\": [],\n  \"marks\": [\n    {\n      \"from\": {\n        \"data\": \"table\",\n        \"transform\": [\n          {\n            \"keys\": [\n              \"data.col\"\n            ],\n            \"type\": \"facet\"\n          },\n          {\n            \"height\": \"data.val\",\n            \"point\": \"data.idx\",\n            \"type\": \"stack\"\n          }\n        ]\n      },\n      \"marks\": [\n        {\n          \"properties\": {\n            \"enter\": {\n              \"fill\": {\n                \"field\": \"data.col\",\n                \"scale\": \"color\"\n              },\n              \"width\": {\n                \"band\": true,\n                \"offset\": -1,\n                \"scale\": \"x\"\n              },\n              \"x\": {\n                \"field\": \"data.idx\",\n                \"scale\": \"x\"\n              },\n              \"y\": {\n                \"field\": \"y\",\n                \"scale\": \"y\"\n              },\n              \"y2\": {\n                \"field\": \"y2\",\n                \"scale\": \"y\"\n              }\n            }\n          },\n          \"type\": \"rect\"\n        }\n      ],\n      \"type\": \"group\"\n    }\n  ],\n  \"padding\": \"auto\",\n  \"scales\": [\n    {\n      \"domain\": {\n        \"data\": \"table\",\n        \"field\": \"data.idx\"\n      },\n      \"name\": \"x\",\n      \"range\": \"width\",\n      \"type\": \"ordinal\",\n      \"zero\": false\n    },\n    {\n      \"domain\": {\n        \"data\": \"stats\",\n        \"field\": \"sum\"\n      },\n      \"name\": \"y\",\n      \"nice\": true,\n      \"range\": \"height\"\n    },\n    {\n      \"domain\": {\n        \"data\": \"table\",\n        \"field\": \"data.col\"\n      },\n      \"name\": \"color\",\n      \"range\": \"category20\",\n      \"type\": \"ordinal\"\n    }\n  ],\n  \"width\": 960\n}",vega_2ad1353a03e84b7b9c5ebab0bf503e2a);
+            
+            
+        
+</script>
