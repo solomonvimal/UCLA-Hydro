@@ -18,902 +18,902 @@
         {
           "col": "Baseflow",
           "idx": 1,
-          "val": NaN
+          "val": 0.050698947553571905
         },
         {
           "col": "Baseflow",
           "idx": 2,
-          "val": NaN
+          "val": 0.051200000314336074
         },
         {
           "col": "Baseflow",
           "idx": 3,
-          "val": NaN
+          "val": 0.05166315789285459
         },
         {
           "col": "Baseflow",
           "idx": 4,
-          "val": NaN
+          "val": 0.05220947359737597
         },
         {
           "col": "Baseflow",
           "idx": 5,
-          "val": NaN
+          "val": 0.053035789806591835
         },
         {
           "col": "Baseflow",
           "idx": 6,
-          "val": NaN
+          "val": 0.0539157897233963
         },
         {
           "col": "Baseflow",
           "idx": 7,
-          "val": NaN
+          "val": 0.05568421051690453
         },
         {
           "col": "Baseflow",
           "idx": 8,
-          "val": NaN
+          "val": 0.06481157886354547
         },
         {
           "col": "Baseflow",
           "idx": 9,
-          "val": NaN
+          "val": 0.0856021059186835
         },
         {
           "col": "Baseflow",
           "idx": 10,
-          "val": NaN
+          "val": 0.1012378955750089
         },
         {
           "col": "Baseflow",
           "idx": 11,
-          "val": NaN
+          "val": 0.11174105272481316
         },
         {
           "col": "Baseflow",
           "idx": 12,
-          "val": NaN
+          "val": 0.11609368485055471
         },
         {
           "col": "Baseflow",
           "idx": 13,
-          "val": NaN
+          "val": 0.11706000044941903
         },
         {
           "col": "Baseflow",
           "idx": 14,
-          "val": NaN
+          "val": 0.11665263191649788
         },
         {
           "col": "Baseflow",
           "idx": 15,
-          "val": NaN
+          "val": 0.11553999922777478
         },
         {
           "col": "Baseflow",
           "idx": 16,
-          "val": NaN
+          "val": 0.1141410533926989
         },
         {
           "col": "Baseflow",
           "idx": 17,
-          "val": NaN
+          "val": 0.1127031583142908
         },
         {
           "col": "Baseflow",
           "idx": 18,
-          "val": NaN
+          "val": 0.11136210517663704
         },
         {
           "col": "Baseflow",
           "idx": 19,
-          "val": NaN
+          "val": 0.11014421115580358
         },
         {
           "col": "Baseflow",
           "idx": 20,
-          "val": NaN
+          "val": 0.1089789482323747
         },
         {
           "col": "Baseflow",
           "idx": 21,
-          "val": NaN
+          "val": 0.10802526223032098
         },
         {
           "col": "Baseflow",
           "idx": 22,
-          "val": NaN
+          "val": 0.1073347375581139
         },
         {
           "col": "Baseflow",
           "idx": 23,
-          "val": NaN
+          "val": 0.10654736886683264
         },
         {
           "col": "Baseflow",
           "idx": 24,
-          "val": NaN
+          "val": 0.1057115796365236
         },
         {
           "col": "Baseflow",
           "idx": 25,
-          "val": NaN
+          "val": 0.10482842114410902
         },
         {
           "col": "Baseflow",
           "idx": 26,
-          "val": NaN
+          "val": 0.10384736880660057
         },
         {
           "col": "Baseflow",
           "idx": 27,
-          "val": NaN
+          "val": 0.10279684188334566
         },
         {
           "col": "Baseflow",
           "idx": 28,
-          "val": NaN
+          "val": 0.10171473736041471
         },
         {
           "col": "Baseflow",
           "idx": 29,
-          "val": NaN
+          "val": 0.10059578959879122
         },
         {
           "col": "Baseflow",
           "idx": 30,
-          "val": NaN
+          "val": 0.09956315716630534
         },
         {
           "col": "Evap",
           "idx": 1,
-          "val": NaN
+          "val": 1.5330294786315215
         },
         {
           "col": "Evap",
           "idx": 2,
-          "val": NaN
+          "val": 1.1752947383805326
         },
         {
           "col": "Evap",
           "idx": 3,
-          "val": NaN
+          "val": 0.8867336828457681
         },
         {
           "col": "Evap",
           "idx": 4,
-          "val": NaN
+          "val": 3.4278831481933594
         },
         {
           "col": "Evap",
           "idx": 5,
-          "val": NaN
+          "val": 2.292866314712324
         },
         {
           "col": "Evap",
           "idx": 6,
-          "val": NaN
+          "val": 1.5797852726359116
         },
         {
           "col": "Evap",
           "idx": 7,
-          "val": NaN
+          "val": 1.8741799978833449
         },
         {
           "col": "Evap",
           "idx": 8,
-          "val": NaN
+          "val": 1.6453136820542185
         },
         {
           "col": "Evap",
           "idx": 9,
-          "val": NaN
+          "val": 3.1536273642590174
         },
         {
           "col": "Evap",
           "idx": 10,
-          "val": NaN
+          "val": 2.7783136750522415
         },
         {
           "col": "Evap",
           "idx": 11,
-          "val": NaN
+          "val": 0.9664231567006362
         },
         {
           "col": "Evap",
           "idx": 12,
-          "val": NaN
+          "val": 0.8918536848143528
         },
         {
           "col": "Evap",
           "idx": 13,
-          "val": NaN
+          "val": 0.600642108760382
         },
         {
           "col": "Evap",
           "idx": 14,
-          "val": NaN
+          "val": 0.8709600012553366
         },
         {
           "col": "Evap",
           "idx": 15,
-          "val": NaN
+          "val": 1.0298715792204205
         },
         {
           "col": "Evap",
           "idx": 16,
-          "val": NaN
+          "val": 1.7995189528716238
         },
         {
           "col": "Evap",
           "idx": 17,
-          "val": NaN
+          "val": 1.503536846135792
         },
         {
           "col": "Evap",
           "idx": 18,
-          "val": NaN
+          "val": 0.5294515829337271
         },
         {
           "col": "Evap",
           "idx": 19,
-          "val": NaN
+          "val": 1.8402600024875841
         },
         {
           "col": "Evap",
           "idx": 20,
-          "val": NaN
+          "val": 1.389502105587407
         },
         {
           "col": "Evap",
           "idx": 21,
-          "val": NaN
+          "val": 2.9052821146814445
         },
         {
           "col": "Evap",
           "idx": 22,
-          "val": NaN
+          "val": 2.0143157902516817
         },
         {
           "col": "Evap",
           "idx": 23,
-          "val": NaN
+          "val": 1.5900410614515605
         },
         {
           "col": "Evap",
           "idx": 24,
-          "val": NaN
+          "val": 1.2008705267780706
         },
         {
           "col": "Evap",
           "idx": 25,
-          "val": NaN
+          "val": 1.1449063122272491
         },
         {
           "col": "Evap",
           "idx": 26,
-          "val": NaN
+          "val": 1.2421747377044277
         },
         {
           "col": "Evap",
           "idx": 27,
-          "val": NaN
+          "val": 1.1975168400689176
         },
         {
           "col": "Evap",
           "idx": 28,
-          "val": NaN
+          "val": 1.212732626262464
         },
         {
           "col": "Evap",
           "idx": 29,
-          "val": NaN
+          "val": 1.3875378944371877
         },
         {
           "col": "Evap",
           "idx": 30,
-          "val": NaN
+          "val": 0.7208400001651363
         },
         {
           "col": "Prec",
           "idx": 1,
-          "val": NaN
+          "val": 6.792526315074218
         },
         {
           "col": "Prec",
           "idx": 2,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Prec",
           "idx": 3,
-          "val": NaN
+          "val": 5.954610516679915
         },
         {
           "col": "Prec",
           "idx": 4,
-          "val": NaN
+          "val": 9.368599997068706
         },
         {
           "col": "Prec",
           "idx": 5,
-          "val": NaN
+          "val": 2.64364212712175
         },
         {
           "col": "Prec",
           "idx": 6,
-          "val": NaN
+          "val": 9.61507369844537
         },
         {
           "col": "Prec",
           "idx": 7,
-          "val": NaN
+          "val": 26.216515862314324
         },
         {
           "col": "Prec",
           "idx": 8,
-          "val": NaN
+          "val": 52.80330525448448
         },
         {
           "col": "Prec",
           "idx": 9,
-          "val": NaN
+          "val": 20.76719986765008
         },
         {
           "col": "Prec",
           "idx": 10,
-          "val": NaN
+          "val": 12.165494768556796
         },
         {
           "col": "Prec",
           "idx": 11,
-          "val": NaN
+          "val": 0.03894736837399633
         },
         {
           "col": "Prec",
           "idx": 12,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Prec",
           "idx": 13,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Prec",
           "idx": 14,
-          "val": NaN
+          "val": 0.013000000091759781
         },
         {
           "col": "Prec",
           "idx": 15,
-          "val": NaN
+          "val": 0.06714736887891042
         },
         {
           "col": "Prec",
           "idx": 16,
-          "val": NaN
+          "val": 6.792526315074218
         },
         {
           "col": "Prec",
           "idx": 17,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Prec",
           "idx": 18,
-          "val": NaN
+          "val": 1.720789466661058
         },
         {
           "col": "Prec",
           "idx": 19,
-          "val": NaN
+          "val": 2.173663147029124
         },
         {
           "col": "Prec",
           "idx": 20,
-          "val": NaN
+          "val": 3.6927789388518586
         },
         {
           "col": "Prec",
           "idx": 21,
-          "val": NaN
+          "val": 6.793473695140136
         },
         {
           "col": "Prec",
           "idx": 22,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Prec",
           "idx": 23,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Prec",
           "idx": 24,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Prec",
           "idx": 25,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Prec",
           "idx": 26,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Prec",
           "idx": 27,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Prec",
           "idx": 28,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Prec",
           "idx": 29,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Prec",
           "idx": 30,
-          "val": NaN
+          "val": 1.0452736814457335
         },
         {
           "col": "Runoff",
           "idx": 1,
-          "val": NaN
+          "val": 0.6332315849826524
         },
         {
           "col": "Runoff",
           "idx": 2,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Runoff",
           "idx": 3,
-          "val": NaN
+          "val": 0.6363747368983336
         },
         {
           "col": "Runoff",
           "idx": 4,
-          "val": NaN
+          "val": 0.7367147331567188
         },
         {
           "col": "Runoff",
           "idx": 5,
-          "val": NaN
+          "val": 0.07572842092424827
         },
         {
           "col": "Runoff",
           "idx": 6,
-          "val": NaN
+          "val": 1.017147374270778
         },
         {
           "col": "Runoff",
           "idx": 7,
-          "val": NaN
+          "val": 3.733558947161624
         },
         {
           "col": "Runoff",
           "idx": 8,
-          "val": NaN
+          "val": 17.983368426875064
         },
         {
           "col": "Runoff",
           "idx": 9,
-          "val": NaN
+          "val": 3.5330210610439905
         },
         {
           "col": "Runoff",
           "idx": 10,
-          "val": NaN
+          "val": 1.5214757915243113
         },
         {
           "col": "Runoff",
           "idx": 11,
-          "val": NaN
+          "val": 0.02678631578547586
         },
         {
           "col": "Runoff",
           "idx": 12,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Runoff",
           "idx": 13,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Runoff",
           "idx": 14,
-          "val": NaN
+          "val": 0.0005494736842688565
         },
         {
           "col": "Runoff",
           "idx": 15,
-          "val": NaN
+          "val": 0.005643157929788638
         },
         {
           "col": "Runoff",
           "idx": 16,
-          "val": NaN
+          "val": 0.5788957890711333
         },
         {
           "col": "Runoff",
           "idx": 17,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Runoff",
           "idx": 18,
-          "val": NaN
+          "val": 0.13943052605456233
         },
         {
           "col": "Runoff",
           "idx": 19,
-          "val": NaN
+          "val": 0.07643368409572807
         },
         {
           "col": "Runoff",
           "idx": 20,
-          "val": NaN
+          "val": 0.2848726324835106
         },
         {
           "col": "Runoff",
           "idx": 21,
-          "val": NaN
+          "val": 0.4409052623337821
         },
         {
           "col": "Runoff",
           "idx": 22,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Runoff",
           "idx": 23,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Runoff",
           "idx": 24,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Runoff",
           "idx": 25,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Runoff",
           "idx": 26,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Runoff",
           "idx": 27,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Runoff",
           "idx": 28,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Runoff",
           "idx": 29,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Runoff",
           "idx": 30,
-          "val": NaN
+          "val": 0.05501263167787233
         },
         {
           "col": "SWE",
           "idx": 1,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 2,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 3,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 4,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 5,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 6,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 7,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 8,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 9,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 10,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 11,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 12,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 13,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 14,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 15,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 16,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 17,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 18,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 19,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 20,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 21,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 22,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 23,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 24,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 25,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 26,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 27,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 28,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 29,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "SWE",
           "idx": 30,
-          "val": NaN
+          "val": 0.0
         },
         {
           "col": "Tair",
           "idx": 1,
-          "val": NaN
+          "val": 11.552282132600483
         },
         {
           "col": "Tair",
           "idx": 2,
-          "val": NaN
+          "val": 12.188364229704204
         },
         {
           "col": "Tair",
           "idx": 3,
-          "val": NaN
+          "val": 13.189092646147076
         },
         {
           "col": "Tair",
           "idx": 4,
-          "val": NaN
+          "val": 11.005489469829358
         },
         {
           "col": "Tair",
           "idx": 5,
-          "val": NaN
+          "val": 8.863968422538356
         },
         {
           "col": "Tair",
           "idx": 6,
-          "val": NaN
+          "val": 7.613483132814106
         },
         {
           "col": "Tair",
           "idx": 7,
-          "val": NaN
+          "val": 8.820960059918855
         },
         {
           "col": "Tair",
           "idx": 8,
-          "val": NaN
+          "val": 11.13441256472939
         },
         {
           "col": "Tair",
           "idx": 9,
-          "val": NaN
+          "val": 9.519562068738436
         },
         {
           "col": "Tair",
           "idx": 10,
-          "val": NaN
+          "val": 7.436108438592208
         },
         {
           "col": "Tair",
           "idx": 11,
-          "val": NaN
+          "val": 6.67165789855154
         },
         {
           "col": "Tair",
           "idx": 12,
-          "val": NaN
+          "val": 6.52697263014944
         },
         {
           "col": "Tair",
           "idx": 13,
-          "val": NaN
+          "val": 4.943409473017643
         },
         {
           "col": "Tair",
           "idx": 14,
-          "val": NaN
+          "val": 8.08693158501073
         },
         {
           "col": "Tair",
           "idx": 15,
-          "val": NaN
+          "val": 9.658747442145097
         },
         {
           "col": "Tair",
           "idx": 16,
-          "val": NaN
+          "val": 9.939236871819746
         },
         {
           "col": "Tair",
           "idx": 17,
-          "val": NaN
+          "val": 10.724527359008789
         },
         {
           "col": "Tair",
           "idx": 18,
-          "val": NaN
+          "val": 7.589534744463469
         },
         {
           "col": "Tair",
           "idx": 19,
-          "val": NaN
+          "val": 10.280121050382915
         },
         {
           "col": "Tair",
           "idx": 20,
-          "val": NaN
+          "val": 13.341326291937577
         },
         {
           "col": "Tair",
           "idx": 21,
-          "val": NaN
+          "val": 12.714406324687756
         },
         {
           "col": "Tair",
           "idx": 22,
-          "val": NaN
+          "val": 13.6809115660818
         },
         {
           "col": "Tair",
           "idx": 23,
-          "val": NaN
+          "val": 11.797699948361046
         },
         {
           "col": "Tair",
           "idx": 24,
-          "val": NaN
+          "val": 8.773832602249948
         },
         {
           "col": "Tair",
           "idx": 25,
-          "val": NaN
+          "val": 8.29499898207815
         },
         {
           "col": "Tair",
           "idx": 26,
-          "val": NaN
+          "val": 8.864805271751003
         },
         {
           "col": "Tair",
           "idx": 27,
-          "val": NaN
+          "val": 8.620144231695878
         },
         {
           "col": "Tair",
           "idx": 28,
-          "val": NaN
+          "val": 8.558094702268901
         },
         {
           "col": "Tair",
           "idx": 29,
-          "val": NaN
+          "val": 9.56231474625437
         },
         {
           "col": "Tair",
           "idx": 30,
-          "val": NaN
+          "val": 8.234346294403077
         }
       ]
     },
@@ -940,7 +940,7 @@
       "fill": "color",
       "offset": 0,
       "properties": {},
-      "title": "Flux Variables for Sonoma"
+      "title": "Flux Variables"
     }
   ],
   "marks": [
