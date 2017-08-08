@@ -2,13 +2,106 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed Aug  2 18:06:40 2017
-
+Data Aggregation 
 @author: svimal
 """
 
-import glob, netCDF4, numpy, os
+import glob, os
 import numpy as np
-# Data aggregation
+import xarray as xray
+from affine import Affine
+from rasterio import features
+import geopandas
+os.getcwd()
+
+def transform_from_latlon(lat, lon):
+    lat = np.asarray(lat)
+    lon = np.asarray(lon)
+    trans = Affine.translation(lon[0], lat[0])
+    scale = Affine.scale(lon[1] - lon[0], lat[1] - lat[0])
+    return trans * scale
+
+def rasterize(shapes, coords, latitude='latitude', longitude='longitude',
+              fill=np.nan, **kwargs):
+    """Rasterize a list of (geometry, fill_value) tuples onto the given
+    xray coordinates. This only works for 1d latitude and longitude
+    arrays.
+    """
+    transform = transform_from_latlon(coords[latitude], coords[longitude])
+    out_shape = (len(coords[latitude]), len(coords[longitude]))
+    raster = features.rasterize(shapes, out_shape=out_shape,
+                                fill=fill, transform=transform,
+                                dtype=float, **kwargs)
+    spatial_coords = {latitude: coords[latitude], longitude: coords[longitude]}
+    return xray.DataArray(raster, coords=spatial_coords, dims=(latitude, longitude))
+
+fluxes = glob.glob("/home2/svimal/Data/VIC_Fluxes/*/*.nc") # Monthly for 86 years
+fnames_yearly = sorted(list(set([fname[0:-5]+"??.nc" for fname in fluxes])))
+counties = geopandas.read_file("/home2/svimal/Github/CA_drought/data/Spatial/CA_counties/CA_counties_WGS.shp")
+county_ids = {k: i for i, k in enumerate(counties.NAME)}
+shapes = zip(counties.geometry, range(len(counties)))
+
+
+variables = ["Prec", "Evap", "Runoff", "Baseflow", "Tair", "SWE", "Soil_liquid"]
+
+    
+def worker(fname):
+    year =  fname[-10:-6]
+    try:
+        os.mkdir("/home2/svimal/Github/UCLA-Hydro/MRPI/Aggregated_Data/"+year)
+    except:
+        pass
+    ds = xray.open_mfdataset(fname) # Open multiple files at a time (12 files for each year)
+    #ds.time
+    ds["counties"] = rasterize(shapes, ds.coords, longitude="lon", latitude="lat")
+    #index = range(len(ds.time))
+    #data = {'index': index}
+    ds = ds.resample("W", "time", how="mean")
+    for week in range(len(ds.time)):
+        filename = "/home2/svimal/Github/UCLA-Hydro/MRPI/Aggregated_Data/" + year + "/"+ year +"_week_"+str(week+1) + ".csv"
+        # Write the header for the CSV file
+        with open(filename, "w") as f:
+            f.write("County, Precipitation, Evapotranspiration, Runoff, Baseflow, Air_Temperature, Snow_Water_Equivalent, Soil_Liquid1, Soil_Liquid2, Soil_Liquid3 \n")
+        for name in counties.NAME:
+            line = []
+            for v in variables:
+                if v != "Soil_liquid":
+                    series = eval("(ds." + v + ".where(ds.counties == county_ids['" + name + "']).mean(['lat', 'lon']))")
+                    #.isel(time=slice(30))#.sel(lat=slice(32, 43), lon=slice(-122, -112)).
+                    series = list(np.array(series))
+                    #data[fname[-10:-6]+"_"+v] = series
+                    try:
+                        line.append(round(float(series[week])))    
+                    except:
+                        line.append(series[week])
+                else:
+                    soil_liquid = []
+                    series = eval("(ds." + v + ".where(ds.counties == county_ids['" + name + "']).mean(['lat', 'lon']))")
+                    for sl in [0,1,2]:
+                        soil_liquid.append(round(float(series.T[sl][week]),3))
+                    line.extend(soil_liquid)
+            line = str(line).strip("[").strip("]")
+            with open(filename, "a+") as f:
+                f.write(name + ", " + str(line) + "\n")
+    return
+
+for fname in list(reversed(fnames_yearly)):
+    worker(fname)
+   
+
+'''
+from multiprocessing.pool import ThreadPool as Pool
+# from multiprocessing import Pool
+
+pool_size = 7  # "parallelness"
+pool = Pool(pool_size)
+
+for fname in list(reversed(fnames_yearly)):
+    pool.apply_async(worker, (fname,))
+
+pool.close()
+pool.join()
+
 
 os.getcwd()
 
@@ -92,3 +185,4 @@ for fname in year1_sorted:
                 data_lists = []
             else:
                 pass
+'''
