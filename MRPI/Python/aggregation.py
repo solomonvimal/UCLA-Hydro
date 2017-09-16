@@ -6,13 +6,15 @@ Data Aggregation
 @author: svimal
 """
 
-import glob, os
+import glob
 import numpy as np
 import xarray as xray
 from affine import Affine
 from rasterio import features
 import geopandas
-os.getcwd()
+#from numba import jit
+import pandas as pd
+import os
 
 def transform_from_latlon(lat, lon):
     lat = np.asarray(lat)
@@ -35,16 +37,94 @@ def rasterize(shapes, coords, latitude='latitude', longitude='longitude',
     spatial_coords = {latitude: coords[latitude], longitude: coords[longitude]}
     return xray.DataArray(raster, coords=spatial_coords, dims=(latitude, longitude))
 
+
+def get_daily_County_variables(fname):
+    """
+    Given shapefile and and NetCDF file pattern for a year (12 monthly files),
+    spits out a dataframe with county daily averages for 9 variables
+    "Prec", "Evap", "Runoff", "Baseflow", "Tair", "SWE", "Soil_liquid"
+    """
+
+    variables = ["Prec", "Evap", "Runoff", "Baseflow", "Tair", "SWE", "Soil_liquid"]
+
+    # Get Shapefile     
+    counties = geopandas.read_file("/home2/svimal/Github/CA_drought/data/Spatial/CA_counties/CA_counties_WGS.shp")
+    county_ids = {k: i for i, k in enumerate(counties.NAME)}
+    shapes = zip(counties.geometry, range(len(counties)))
+
+    # Open multiple NetCDF files 
+    ds = xray.open_mfdataset(fname) # Open multiple files at a time (12 files for each year)
+    #ds.time
+    ds["counties"] = rasterize(shapes, ds.coords, longitude="lon", latitude="lat")
+    #index = range(len(ds.time))
+    #data = {'index': index}
+    #ds = ds.resample("W", "time", how="mean") # this part did weekly means
+    # Write the header for the CSV file
+    dict1 = {}
+    i = 0
+    for name in counties.NAME:
+        data = []
+        print i+1, name
+        for v in variables:
+            v
+            if v != "Soil_liquid":
+                series = eval("(ds." + v + ".where(ds.counties == county_ids['" + name + "']).mean(['lat', 'lon']))")
+                #.isel(time=slice(30))#.sel(lat=slice(32, 43), lon=slice(-122, -112)).
+                series = list(np.array(series))
+                #data[fname[-10:-6]+"_"+v] = series
+                data.append(series)
+            else:
+                soil_liquid = []
+                series = eval("(ds." + v + ".where(ds.counties == county_ids['" + name + "']).mean(['lat', 'lon']))")
+                for sl in [0,1,2]:
+                    soil_liquid.append(list(np.array(series.T[sl])))
+                data.extend(soil_liquid)
+        dict1[name]=data
+    dates = [str(x)[0:10] for x in list(np.array(ds.time))]
+    Counties  = [str(n) for n in counties.NAME]
+    
+    df2 = pd.DataFrame.from_dict(dict1)#, orient='columns', dtype=None)
+    df2 = df2.T
+    columns = ["Precipitation", "Evapotranspiration", 
+           "Runoff", "Baseflow", "Air_Temperature", "Snow_Water_Equivalent", 
+           "Soil_Liquid1", "Soil_Liquid2", "Soil_Liquid3"]      
+    df2.columns = columns
+    
+    return df2, dates, Counties
+
+
+# Create lists of dates and counties
+
+
 fluxes = glob.glob("/home2/svimal/Data/VIC_Fluxes/*/*.nc") # Monthly for 86 years
 fnames_yearly = sorted(list(set([fname[0:-5]+"??.nc" for fname in fluxes])))
-counties = geopandas.read_file("/home2/svimal/Github/CA_drought/data/Spatial/CA_counties/CA_counties_WGS.shp")
-county_ids = {k: i for i, k in enumerate(counties.NAME)}
-shapes = zip(counties.geometry, range(len(counties)))
 
 
-variables = ["Prec", "Evap", "Runoff", "Baseflow", "Tair", "SWE", "Soil_liquid"]
+############## Yearly files of daily - County averages   ########################
 
-    
+for fname in list(reversed(fnames_yearly)):
+    print fname
+    year = fname[-10:-6]
+    filename = "/home2/svimal/Github/UCLA-Hydro/MRPI/Aggregated_Data/" + year + "_daily_County.csv"
+
+    # Compute County-daily means
+    df2, dates, Counties = get_daily_County_variables(fname)
+
+    # Write it out into daily - County csv file
+    with open(filename, "w") as f:
+        f.write("Date, County, Precipitation, Evapotranspiration, Runoff, Baseflow, Air_Temperature, Snow_Water_Equivalent, Soil_Liquid1, Soil_Liquid2, Soil_Liquid3 \n")
+    with open(filename, "a+") as f:
+        for i, date in enumerate(dates):
+            for county in Counties:
+                print date, county
+                line = []
+                for v in range(9):
+                    line.append(df2.T[county][v][i])
+                print line
+                line = ", ".join([str(x) for x in line])
+                f.write(date + ", "+ county + ", " + line + "\n")
+
+
 def worker(fname):
     year =  fname[-10:-6]
     try:
@@ -53,6 +133,11 @@ def worker(fname):
         pass
     ds = xray.open_mfdataset(fname) # Open multiple files at a time (12 files for each year)
     #ds.time
+    variables = ["Prec", "Evap", "Runoff", "Baseflow", "Tair", "SWE", "Soil_liquid"]
+    counties = geopandas.read_file("/home2/svimal/Github/CA_drought/data/Spatial/CA_counties/CA_counties_WGS.shp")
+    county_ids = {k: i for i, k in enumerate(counties.NAME)}
+    shapes = zip(counties.geometry, range(len(counties)))
+    
     ds["counties"] = rasterize(shapes, ds.coords, longitude="lon", latitude="lat")
     #index = range(len(ds.time))
     #data = {'index': index}
@@ -71,7 +156,7 @@ def worker(fname):
                     series = list(np.array(series))
                     #data[fname[-10:-6]+"_"+v] = series
                     try:
-                        line.append(round(float(series[week])))    
+                        line.append(round(float(series[week])))
                     except:
                         line.append(series[week])
                 else:
@@ -85,11 +170,50 @@ def worker(fname):
                 f.write(name + ", " + str(line) + "\n")
     return
 
-for fname in list(reversed(fnames_yearly)):
+
+#########################   WEEKLY COUNTY AVERAGES   ####################################
+
+for fname in list(reversed(fnames_yearly))[68:]: ## Running from where it stopped 
+    print fname    
     worker(fname)
-   
 
 '''
+#@jit
+
+df3 = pd.concat([pd.DataFrame(df2[x].values.tolist()).add_prefix(x) for x in columns], axis=1)
+df4 = pd.concat([df3, df2.drop(columns, axis=1)], axis=1)
+
+
+#df3 = df2.melt() #stack().reset_index()
+
+for name in counties.NAME[0:2]:
+    print name
+    data = dict1[name]
+    df = pd.DataFrame(data, columns = dates)
+    df = df.T
+    columns = ["Precipitation", "Evapotranspiration", 
+                  "Runoff", "Baseflow", "Air_Temperature", "Snow_Water_Equivalent", 
+                  "Soil_Liquid1", "Soil_Liquid2", "Soil_Liquid3"]      
+    df.columns = columns
+        #df.index = pd.to_datetime(df.index)
+    
+
+
+    line = ", ".join([str(l) for l in line])
+    
+    df2=pd.DataFrame(zip(dates,Counties))
+    ["Date", "County"]
+    
+    with open(filename, "w") as f:
+        f.write("Date, County, Precipitation, Evapotranspiration, Runoff, Baseflow, Air_Temperature, Snow_Water_Equivalent, Soil_Liquid1, Soil_Liquid2, Soil_Liquid3 \n")
+    with open(filename, "a+") as f:
+        f.write(name + ", " + line + "\n")
+
+
+%time dict1 = worker_yearly_daily(fname)
+
+
+
 from multiprocessing.pool import ThreadPool as Pool
 # from multiprocessing import Pool
 

@@ -10,7 +10,7 @@ import geopandas
 from rasterio import features
 from affine import Affine
 import numpy as np
-import xarray as xray
+import xarray
 
 def transform_from_latlon(lat, lon):
     lat = np.asarray(lat)
@@ -22,7 +22,7 @@ def transform_from_latlon(lat, lon):
 def rasterize(shapes, coords, latitude='latitude', longitude='longitude',
               fill=np.nan, **kwargs):
     """Rasterize a list of (geometry, fill_value) tuples onto the given
-    xray coordinates. This only works for 1d latitude and longitude
+    xarray coordinates. This only works for 1d latitude and longitude
     arrays.
     """
     transform = transform_from_latlon(coords[latitude], coords[longitude])
@@ -31,7 +31,7 @@ def rasterize(shapes, coords, latitude='latitude', longitude='longitude',
                                 fill=fill, transform=transform,
                                 dtype=float, **kwargs)
     spatial_coords = {latitude: coords[latitude], longitude: coords[longitude]}
-    return xray.DataArray(raster, coords=spatial_coords, dims=(latitude, longitude))
+    return xarray.DataArray(raster, coords=spatial_coords, dims=(latitude, longitude))
 
 # this shapefile is from natural earth data
 # http://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/
@@ -39,11 +39,12 @@ def rasterize(shapes, coords, latitude='latitude', longitude='longitude',
 counties = geopandas.read_file("/home2/svimal/Github/CA_drought/data/Spatial/CA_counties/CA_counties_WGS.shp")
 county_ids = {k: i for i, k in enumerate(counties.NAME)}
 shapes = zip(counties.geometry, range(len(counties)))
-ds = xray.open_dataset("/home2/svimal/Data/VIC_Fluxes/1920s/fluxes.1924-11.nc")
+ds = xarray.open_dataset("/home2/svimal/Data/VIC_Fluxes/1920s/fluxes.1924-11.nc")
 ds["counties"] = rasterize(shapes, ds.coords, longitude="lon", latitude="lat")
 
 # Plot of all counties
 (ds.counties.sel(lat=slice(32.5, 42.5), lon=slice(-125.2, -114.0)).plot())
+
   
 # Plot of only one county
 (ds.counties == county_ids['Los Angeles']).plot()
