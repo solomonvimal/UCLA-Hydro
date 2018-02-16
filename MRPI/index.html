@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/mosquito_pools_1.js"></script>
+        <script src="data/CA_counties_WGS_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        })
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+            if (bounds_group.getLayers().length) {
+                map.fitBounds(bounds_group.getBounds());
+            }
+            map.setMaxBounds(map.getBounds());
+        }
+        var img_CA_Irrigated_1k_0 = 'data/CA_Irrigated_1k_0.png';
+        var img_bounds_CA_Irrigated_1k_0 = [[31.4541016867,-125.064501698],[43.5024592011,-113.877464948]];
+        var overlay_CA_Irrigated_1k_0 = new L.imageOverlay(img_CA_Irrigated_1k_0, img_bounds_CA_Irrigated_1k_0);
+        bounds_group.addLayer(overlay_CA_Irrigated_1k_0);
+        map.addLayer(overlay_CA_Irrigated_1k_0);
+        function pop_mosquito_pools_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Virus'] !== null ? Autolinker.link(String(feature.properties['Virus'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_mosquito_pools_1_0() {
+            return {
+                pane: 'pane_mosquito_pools_1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(248,169,73,1.0)',
+            }
+        }
+        map.createPane('pane_mosquito_pools_1');
+        map.getPane('pane_mosquito_pools_1').style.zIndex = 401;
+        map.getPane('pane_mosquito_pools_1').style['mix-blend-mode'] = 'normal';
+        var layer_mosquito_pools_1 = new L.geoJson(json_mosquito_pools_1, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_mosquito_pools_1',
+            onEachFeature: pop_mosquito_pools_1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_mosquito_pools_1_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_mosquito_pools_1);
+        map.addLayer(layer_mosquito_pools_1);
+        function pop_CA_counties_WGS_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? Autolinker.link(String(feature.properties['OBJECTID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['STATEFP'] !== null ? Autolinker.link(String(feature.properties['STATEFP'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COUNTYFP'] !== null ? Autolinker.link(String(feature.properties['COUNTYFP'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COUNTYNS'] !== null ? Autolinker.link(String(feature.properties['COUNTYNS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GEOID'] !== null ? Autolinker.link(String(feature.properties['GEOID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAME'] !== null ? Autolinker.link(String(feature.properties['NAME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAMELSAD'] !== null ? Autolinker.link(String(feature.properties['NAMELSAD'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LSAD'] !== null ? Autolinker.link(String(feature.properties['LSAD'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CLASSFP'] !== null ? Autolinker.link(String(feature.properties['CLASSFP'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MTFCC'] !== null ? Autolinker.link(String(feature.properties['MTFCC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CSAFP'] !== null ? Autolinker.link(String(feature.properties['CSAFP'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CBSAFP'] !== null ? Autolinker.link(String(feature.properties['CBSAFP'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['METDIVFP'] !== null ? Autolinker.link(String(feature.properties['METDIVFP'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FUNCSTAT'] !== null ? Autolinker.link(String(feature.properties['FUNCSTAT'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ALAND'] !== null ? Autolinker.link(String(feature.properties['ALAND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AWATER'] !== null ? Autolinker.link(String(feature.properties['AWATER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INTPTLAT'] !== null ? Autolinker.link(String(feature.properties['INTPTLAT'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INTPTLON'] !== null ? Autolinker.link(String(feature.properties['INTPTLON'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Leng'] !== null ? Autolinker.link(String(feature.properties['Shape_Leng'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? Autolinker.link(String(feature.properties['Shape_Area'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['geoid_num'] !== null ? Autolinker.link(String(feature.properties['geoid_num'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['IR_WGS_cou'] !== null ? Autolinker.link(String(feature.properties['IR_WGS_cou'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['IR_WGS_sum'] !== null ? Autolinker.link(String(feature.properties['IR_WGS_sum'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['IR_WGS_mea'] !== null ? Autolinker.link(String(feature.properties['IR_WGS_mea'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Irrigation'] !== null ? Autolinker.link(String(feature.properties['Irrigation'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Area'] !== null ? Autolinker.link(String(feature.properties['Area'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Area_sqkm'] !== null ? Autolinker.link(String(feature.properties['Area_sqkm'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CA_counties_WGS_2_0(feature) {
+            if (feature.properties['Irrigation'] >= 0.000000 && feature.properties['Irrigation'] <= 182.281429 ) {
+                return {
+                pane: 'pane_CA_counties_WGS_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.69)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(250,250,250,0.69)',
+            }
+            }
+            if (feature.properties['Irrigation'] >= 182.281429 && feature.properties['Irrigation'] <= 1077.200000 ) {
+                return {
+                pane: 'pane_CA_counties_WGS_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.69)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,209,209,0.69)',
+            }
+            }
+            if (feature.properties['Irrigation'] >= 1077.200000 && feature.properties['Irrigation'] <= 1880.141429 ) {
+                return {
+                pane: 'pane_CA_counties_WGS_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.69)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(168,168,168,0.69)',
+            }
+            }
+            if (feature.properties['Irrigation'] >= 1880.141429 && feature.properties['Irrigation'] <= 4705.080000 ) {
+                return {
+                pane: 'pane_CA_counties_WGS_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.69)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(127,127,127,0.69)',
+            }
+            }
+            if (feature.properties['Irrigation'] >= 4705.080000 && feature.properties['Irrigation'] <= 13209.072857 ) {
+                return {
+                pane: 'pane_CA_counties_WGS_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.69)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(86,86,86,0.69)',
+            }
+            }
+            if (feature.properties['Irrigation'] >= 13209.072857 && feature.properties['Irrigation'] <= 25500.401429 ) {
+                return {
+                pane: 'pane_CA_counties_WGS_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.69)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(45,45,45,0.69)',
+            }
+            }
+            if (feature.properties['Irrigation'] >= 25500.401429 && feature.properties['Irrigation'] <= 65213.660000 ) {
+                return {
+                pane: 'pane_CA_counties_WGS_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.69)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(5,5,5,0.69)',
+            }
+            }
+        }
+        map.createPane('pane_CA_counties_WGS_2');
+        map.getPane('pane_CA_counties_WGS_2').style.zIndex = 402;
+        map.getPane('pane_CA_counties_WGS_2').style['mix-blend-mode'] = 'normal';
+        var layer_CA_counties_WGS_2 = new L.geoJson(json_CA_counties_WGS_2, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_CA_counties_WGS_2',
+            onEachFeature: pop_CA_counties_WGS_2,
+            style: style_CA_counties_WGS_2_0,
+        });
+        bounds_group.addLayer(layer_CA_counties_WGS_2);
+        map.addLayer(layer_CA_counties_WGS_2);
+        setBounds();
+        var i = 0;
+        layer_mosquito_pools_1.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Virus'] !== null?String('<div style="color: #000000; font-size: 11pt; font-weight: bold; font-style: italic; font-family: \'Ubuntu\', sans-serif;">' + layer.feature.properties['Virus']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_mosquito_pools_1'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        L.ImageOverlay.include({
+            getBounds: function () {
+                return this._bounds;
+            }
+        });
+        resetLabels([layer_mosquitopools_1]);
+        map.on("zoomend", function(){
+            resetLabels([layer_mosquitopools_1]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_mosquitopools_1]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_mosquitopools_1]);
+        });
+        </script>
+    </body>
+</html>
